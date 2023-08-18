@@ -1,5 +1,6 @@
 
 public abstract class Embarcacion {
+    //Atributos propios de la clase
     protected Capitan capitan;
     protected double precioBase;
     protected double valorAdicional;

@@ -6,12 +6,12 @@ public class Main {
     private static ArrayList<Velero> veleros = new ArrayList<>();
     private static ArrayList<Yate> yates = new ArrayList<>();
 
-    public static void agregarYate(Yate yate) { yates.add(yate);}
+    public static void agregarYate(Yate yate) { yates.add(yate);} //metodo para agregar yates al arraylist
     public static void agregarVelero(Velero velero) {
         veleros.add(velero);
-    }
+    } //metodo para agregar veleros al arraylist
 
-    public static void mostrarInfo() {
+    public static void mostrarInfo() { //Metodo para mostrar todos los veleros y yates disponibles
         int indice = 1;
 
         System.out.println("--------------- Informacion de Yates ------------");
@@ -28,7 +28,7 @@ public class Main {
 
         System.out.println(" ");
         System.out.println(" ");
-        indice = 1; // Reinicia el contador de índices
+        indice = 1; // Reiniciamos el contador de índices
 
         System.out.println("----------- Información de Veleros -------------");
         for (Velero velero : veleros) {
@@ -43,19 +43,27 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        //Definimos atributos que usaremos en el main
+        int opcion;
+        boolean alquilerExitoso;
+        boolean ventaExitosa;
+        String nombreCap;
+        String apellidoCap;
+        String matricula;
+
         //Definimos un capitan base que usaremos para crear las embarcaciones
-        Capitan capitanBase = new Capitan("null", "null", "null");
+        Capitan capitan = new Capitan("null", "null", "null");
 
 
         //Creamos las instancias de yate y velero
-        Velero velero1 = new Velero(capitanBase, 2020, 79, 4);
-        Velero velero2 = new Velero(capitanBase, 1999, 90, 6);
-        Velero velero3 = new Velero(capitanBase, 2017, 37, 2);
+        Velero velero1 = new Velero(capitan, 2020, 79, 4);
+        Velero velero2 = new Velero(capitan, 1999, 90, 6);
+        Velero velero3 = new Velero(capitan, 2017, 37, 2);
 
-        Yate yate1 = new Yate(capitanBase, 2019, 108, 8);
-        Yate yate2 = new Yate(capitanBase, 2013, 156, 7);
-        Yate yate3 = new Yate(capitanBase, 2023, 50, 2);
-        Yate yate4 = new Yate(capitanBase, 2019, 78, 5);
+        Yate yate1 = new Yate(capitan, 2019, 108, 8);
+        Yate yate2 = new Yate(capitan, 2013, 156, 7);
+        Yate yate3 = new Yate(capitan, 2023, 50, 2);
+        Yate yate4 = new Yate(capitan, 2019, 78, 5);
 
         //Agregamos los yates y veleros a las listas:
         agregarYate(yate1);
@@ -72,18 +80,14 @@ public class Main {
 
         System.out.println("Bienvenido a Makai, la empresa con la que puedes navegar tus sueños.");
         System.out.print("Ingrese la cantidad con la que cuenta para usar nuestros servicios: ");
-        bill = sc.nextDouble();
+        bill = sc.nextDouble(); //le pedimos el saldo de cuenta al usuario
 
-
-        int opcion;
-        boolean alquilerExitoso;
-        boolean ventaExitosa;
         do {
             System.out.println("1. Ver informacion de las embarcaciones disponibles");
             System.out.println("2. Alquilar velero");
             System.out.println("3. Alquilar yate"); //Dado que los yates se pueden tanto alquilar como comprar, se definen dos opciones para yate
             System.out.println("4. Comprar yate");
-            System.out.println("5. Ver saldo de cuenta actual"); //comprobar cuanto tiene en su bill
+            System.out.println("5. Ver mis datos y saldo de cuenta"); //comprobar cuanto tiene en su bill
             System.out.println("6. Agregar más plata para comprar"); //Agregar más platica a su bill
             System.out.println("0. Salir del programa");
             opcion = sc.nextInt();
@@ -93,17 +97,30 @@ public class Main {
                     mostrarInfo();
                     break;
 
-                case 2:
-                    System.out.print("Ingrese el indice del velero: ");
+                case 2: //Alquilar velero
+                    sc.nextLine(); //Limpiamos el buffer
+                    System.out.print("Ingrese su nombre: "); //Le pedimos al cliente sus datos para el alquiler de la embarcación
+                    nombreCap = sc.nextLine();
+                    System.out.print("Ingrese su apellido: ");
+                    apellidoCap = sc.nextLine();
+                    System.out.print("Ingrese su matricula de navegación: ");
+                    matricula = sc.nextLine();
+
+                    System.out.print("Ingrese el indice del velero (De la lista inicial): ");
                     int veleroAlquilar = sc.nextInt();
+                    sc.nextLine(); //Limpiamos el buffer
                     switch (veleroAlquilar) {
                         case 1:
                             //Velero velero1 = new Velero(capitanBase, 2020, 79, 4)
                             alquilerExitoso = velero1.alquilar(bill);
                             if (alquilerExitoso) {
-                                bill -= velero1.getPrecioBase();
+                                bill -= velero1.getPrecioBase(); //Restamos el valor del alquiler al saldo del cliente
                                 veleros.remove(velero1);
+                                capitan.setNombre(nombreCap);
+                                capitan.setApellido(apellidoCap);
+                                capitan.setMatriculaNavegacion(matricula);
                                 System.out.println("Velero alquilado con éxito, su cuenta actual es: " + bill + " COP");
+                                System.out.println("Gracias por su compra Señor/a " + capitan.getNombre() + " " + capitan.getApellido());
                             }
                             break;
                         case 2:
@@ -112,7 +129,11 @@ public class Main {
                             if (alquilerExitoso) {
                                 bill -= velero2.getPrecioBase();
                                 veleros.remove(velero2);
+                                capitan.setNombre(nombreCap);
+                                capitan.setApellido(apellidoCap);
+                                capitan.setMatriculaNavegacion(matricula);
                                 System.out.println("Velero alquilado con éxito, su cuenta actual es: " + bill + " COP");
+                                System.out.println("Gracias por su compra Señor/a " + capitan.getNombre() + " " + capitan.getApellido());
                             }
                             break;
                         case 3:
@@ -121,7 +142,11 @@ public class Main {
                             if (alquilerExitoso) {
                                 bill -= velero3.getPrecioBase();
                                 veleros.remove(velero3);
+                                capitan.setNombre(nombreCap);
+                                capitan.setApellido(apellidoCap);
+                                capitan.setMatriculaNavegacion(matricula);
                                 System.out.println("Velero alquilado con éxito, su cuenta actual es: " + bill + " COP");
+                                System.out.println("Gracias por su compra Señor/a " + capitan.getNombre() + " " + capitan.getApellido());
                             }
                             break;
                         default:
@@ -130,17 +155,31 @@ public class Main {
                     }
                     break;
 
-                case 3:
-                    System.out.print("Ingrese el indice del yate: ");
+
+                case 3: //Alquilar yates
+                    sc.nextLine(); //Limpiamos el buffer
+                    System.out.print("Ingrese su nombre: "); //Le pedimos al cliente sus datos para el alquiler de la embarcación
+                    nombreCap = sc.nextLine();
+                    System.out.print("Ingrese su apellido: ");
+                    apellidoCap = sc.nextLine();
+                    System.out.print("Ingrese su matricula de navegación: ");
+                    matricula = sc.nextLine();
+
+                    System.out.print("Ingrese el indice del yate (De la lista inicial): ");
                     int yateAlquilar = sc.nextInt();
+                    sc.nextLine(); //Limpiamos el buffer
                     switch (yateAlquilar) {
                         case 1:
                             //Yate yate1 = new Yate(capitanBase, 2019, 108, 8)
                             alquilerExitoso = yate1.alquilar(bill);
                             if (alquilerExitoso) {
-                                bill -= yate1.getPrecioBase();
+                                bill -= yate1.getPrecioBase(); //Restamos el valor del alquiler al saldo del cliente
                                 yates.remove(yate1);
+                                capitan.setNombre(nombreCap);
+                                capitan.setApellido(apellidoCap);
+                                capitan.setMatriculaNavegacion(matricula);
                                 System.out.println("Yate alquilado con éxito, su cuenta actual es: " + bill + " COP");
+                                System.out.println("Gracias por su compra Señor/a " + capitan.getNombre() + " " + capitan.getApellido());
                             }
                             break;
                         case 2:
@@ -149,7 +188,11 @@ public class Main {
                             if (alquilerExitoso) {
                                 bill -= yate2.getPrecioBase();
                                 yates.remove(yate2);
+                                capitan.setNombre(nombreCap);
+                                capitan.setApellido(apellidoCap);
+                                capitan.setMatriculaNavegacion(matricula);
                                 System.out.println("Yate alquilado con éxito, su cuenta actual es: " + bill + " COP");
+                                System.out.println("Gracias por su compra Señor/a " + capitan.getNombre() + " " + capitan.getApellido());
                             }
                             break;
                         case 3:
@@ -158,7 +201,11 @@ public class Main {
                             if (alquilerExitoso) {
                                 bill -= yate3.getPrecioBase();
                                 yates.remove(yate3);
+                                capitan.setNombre(nombreCap);
+                                capitan.setApellido(apellidoCap);
+                                capitan.setMatriculaNavegacion(matricula);
                                 System.out.println("Yate alquilado con éxito, su cuenta actual es: " + bill + " COP");
+                                System.out.println("Gracias por su compra Señor/a " + capitan.getNombre() + " " + capitan.getApellido());
                             }
                         case 4:
                             //Yate yate4 = new Yate(capitanBase, 2019, 78, 5)
@@ -166,7 +213,11 @@ public class Main {
                             if (alquilerExitoso) {
                                 bill -= yate4.getPrecioBase();
                                 yates.remove(yate4);
+                                capitan.setNombre(nombreCap);
+                                capitan.setApellido(apellidoCap);
+                                capitan.setMatriculaNavegacion(matricula);
                                 System.out.println("Yate alquilado con éxito, su cuenta actual es: " + bill + " COP");
+                                System.out.println("Gracias por su compra Señor/a " + capitan.getNombre() + " " + capitan.getApellido());
                             }
                             break;
                         default:
@@ -175,42 +226,67 @@ public class Main {
                     }
                     break;
 
-                case 4:
-                    System.out.print("Ingrese el indice del yate: ");
+                case 4: //Comprar yate
+                    sc.nextLine();
+                    System.out.print("Ingrese su nombre: ");
+                    nombreCap = sc.nextLine();
+                    System.out.print("Ingrese su apellido: ");
+                    apellidoCap = sc.nextLine();
+                    System.out.print("Ingrese su matricula de navegación: ");
+                    matricula = sc.nextLine();
+
+                    System.out.print("Ingrese el indice del yate (De la lista inicial): ");
                     int yateCompra = sc.nextInt();
+                    sc.nextLine();
                     switch (yateCompra) {
                         case 1:
                             //Yate yate1 = new Yate(capitanBase, 2019, 108, 8)
-                            ventaExitosa = yate1.alquilar(bill);
+                            ventaExitosa = yate1.comprar(bill);
                             if (ventaExitosa) {
-                                bill -= yate1.calcularMontoCompraYate();
+                                bill -= yate1.calcularMontoCompraYate(); //Restamos el valor de la venta al saldo del cliente
                                 yates.remove(yate1);
+                                capitan.setNombre(nombreCap);
+                                capitan.setApellido(apellidoCap);
+                                capitan.setMatriculaNavegacion(matricula);
                                 System.out.println("Yate comprado con éxito, su cuenta actual es: " + bill + " COP");
+                                System.out.println("Gracias por su compra Señor/a " + capitan.getNombre() + " " + capitan.getApellido());
                             }
                             break;
                         case 2:
                             //Yate yate2 = new Yate(capitanBase, 2013, 156, 7)
-                            ventaExitosa = yate2.alquilar(bill);
+                            ventaExitosa = yate2.comprar(bill);
                             if (ventaExitosa) {
                                 bill -= yate2.calcularMontoCompraYate();
                                 yates.remove(yate2);
+                                capitan.setNombre(nombreCap);
+                                capitan.setApellido(apellidoCap);
+                                capitan.setMatriculaNavegacion(matricula);
                                 System.out.println("Yate comprado con éxito, su cuenta actual es: " + bill + " COP");
+                                System.out.println("Gracias por su compra Señor/a " + capitan.getNombre() + " " + capitan.getApellido());
                             }
                             break;
                         case 3:
                             //Yate yate3 = new Yate(capitanBase, 20231, 50, 2)
-                            ventaExitosa = yate3.alquilar(bill);
+                            ventaExitosa = yate3.comprar(bill);
                             if (ventaExitosa) {
                                 bill -= yate3.calcularMontoCompraYate();
                                 yates.remove(yate3);
+                                capitan.setNombre(nombreCap);
+                                capitan.setApellido(apellidoCap);
+                                capitan.setMatriculaNavegacion(matricula);
                                 System.out.println("Yate comprado con éxito, su cuenta actual es: " + bill + " COP");
+                                System.out.println("Gracias por su compra Señor/a " + capitan.getNombre() + " " + capitan.getApellido());
                             }
                         case 4:
-                            ventaExitosa = yate4.alquilar(bill);
+                            ventaExitosa = yate4.comprar(bill);
                             if (ventaExitosa) {
                                 bill -= yate4.calcularMontoCompraYate();
                                 yates.remove(yate4);
+                                capitan.setNombre(nombreCap);
+                                capitan.setApellido(apellidoCap);
+                                capitan.setMatriculaNavegacion(matricula);
                                 System.out.println("Yate comprado con éxito, su cuenta actual es: " + bill + " COP");
+                                System.out.println("Gracias por su compra Señor/a " + capitan.getNombre() + " " + capitan.getApellido());
                             }
                             break;
                         default:
@@ -220,9 +296,10 @@ public class Main {
                     break;
 
                 case 5:
+                    System.out.println("Señor/a " + capitan.getNombre() + " " + capitan.getApellido() + "identificado maritimamente con la matricula de Navegacion: " + capitan.getMatriculaNavegacion());
                     System.out.println("Su saldo es: " + bill);
                     break;
-                case 6:
+                case 6: //Ped
                     System.out.print("Ingrese el monto que desea añadir a su cuenta: ");
                     double cantidadAgregada = sc.nextDouble();
                     bill = cantidadAgregada + bill;
@@ -235,6 +312,5 @@ public class Main {
 
         } while (opcion != 0);
     }
-
 
 }
