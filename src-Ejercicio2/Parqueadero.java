@@ -15,7 +15,7 @@ public class Parqueadero {
         if (fila >= 0 && fila < 5 && columna >= 0 && columna < 10) {
             if (espaciosEstacionamiento[fila][columna] == null) {
                 espaciosEstacionamiento[fila][columna] = carro;
-                System.out.println("Carro estacionado con éxito en la fila " + (fila+1) + ", columna " + (columna+1));
+                System.out.println("Carro con placa " + carro.getPlaca() + " estacionado con éxito en la fila " + (fila+1) + ", columna " + (columna+1));
                 return true;
             }
         }
@@ -24,6 +24,12 @@ public class Parqueadero {
         System.out.println("Espacio en la fila " + (fila+1) + ", columna " + (columna+1) + ", ocupado.");
         return false;
     }
+    public double cobrarPorTiempo(Carro carro, int horas){
+        double cobro = tarifaHora * horas;
+        System.out.println("El auto con placa " + carro.getPlaca() + " deberá pagar " + cobro);
+        System.out.println();
+        return cobro;
+    }
     public void retirarCarro(String placa){
         for (int fila = 0; fila < 5; fila++) {
             for (int columna = 0; columna < 10; columna++) {
@@ -31,17 +37,11 @@ public class Parqueadero {
                 if (carro != null && carro.getPlaca().equals(placa)) {
                     espaciosEstacionamiento[fila][columna] = null;
                     System.out.println("Carro con placa " + placa + " retirado con éxito.");
-                    return;
                 }
             }
         }
         System.out.println("No se encontró un carro con la placa " + placa);
     }
-
-    public double cobrarPorTiempo(Carro carro, int horas){
-        return 0.0;
-    }
-
     public void mostrarParqueadero() {
         System.out.print("  ");
         for (int e = 0; e < 10; e++) {
