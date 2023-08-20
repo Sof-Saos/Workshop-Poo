@@ -7,4 +7,7 @@ En esta carpeta, hallarás la simulación de una empresa de alquiler y venta de 
 #### Carpeta 'src-Ejercicio2'
 Dentro de esta carpeta, encontrarás la simulación de un parqueadero, también implementada en Java. La simulación incluye la representación de carros, estacionamiento, y operaciones como parquear, retirar y calcular costos. El código se encuentra organizado y comentado para facilitar su comprensión. <br>
 <br>
-Para acceder a cualquiera de las simulaciones, simplemente navega a la carpeta correspondiente y revisa los archivos disponibles. Cada carpeta contiene los elementos necesarios para ejecutar y entender la simulación asociada al ejercicio.
+Para acceder a cualquiera de las simulaciones, simplemente navega a la carpeta correspondiente y revisa los archivos disponibles. Cada carpeta contiene los elementos necesarios para ejecutar y entender la simulación asociada al ejercicio. <br>
+
+##### Trabajo hecho por: 
+Sofía Salamanca
