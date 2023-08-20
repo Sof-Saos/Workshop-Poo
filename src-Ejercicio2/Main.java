@@ -22,9 +22,9 @@ public class Main {
             System.out.println("1. Ver parqueadero.");
             System.out.println("2. Parquear carros.");
             System.out.println("3. Retirar carro.");
-            System.out.println("4. Cambiar tarifa (Opción de administrador).");
-            System.out.println("5. Agregar y parquear un carro nuevo");
-            System.out.println("6. Ver simulación completa. (Sin ingresar más cosas por consola)"); //No ejecutar esta después de haber ingresado alguna opción diferente antes
+            System.out.println("4. Agregar y parquear un carro nuevo");
+            System.out.println("5. Ver simulación completa. (Sin ingresar más cosas por consola)"); //No ejecutar esta después de haber ingresado alguna opción diferente antes
+            System.out.println("6. Cambiar tarifa (Opción de administrador).");
             System.out.println("0. Salir del programa.");
             System.out.print("Seleccione una opción: ");
             opcion = sc.nextInt();
@@ -58,19 +58,8 @@ public class Main {
                     parqueadero.retirarCarro(retiro);
                     break;
 
-                case 4:
-                    //Los carros que se estacionaron antes de cambiar la tarifa, se les habrá cobrado la tarifa anterior.
-                    System.out.println("Ingrese la contraseña de verificación"); //La contraseña es 112233
-                    int password = sc.nextInt();
-                    sc.nextLine(); //Limpiamos el buffer
-                    if (password == 112233) { //Hacemos la verificación de la contraseña
-                        System.out.print("Ingrese la tarifa nueva: ");
-                        double nuevaTarifa = sc.nextDouble();
-                        parqueadero.setTarifaHora(nuevaTarifa); //Cambiamos la tarifa con el set
-                    }
-                    break;
 
-                case 5:
+                case 4:
                     //Se le piden los datos al usuario
                     System.out.print("Ingrese la placa de su auto: "); String placaConsola = sc.nextLine();
                     System.out.print("Ingrese la marca de su auto: "); String marcaConsola = sc.nextLine();
@@ -95,7 +84,7 @@ public class Main {
                         }
                     break;
 
-                case 6:
+                case 5:
                     //Primero vemos el estacionamiento vacio
                     System.out.println("Estacionamiento vacio");
                     parqueadero.mostrarParqueadero();
@@ -122,7 +111,19 @@ public class Main {
                     System.out.println();
                     //Veamos si se agregaron exitosamente
                     parqueadero.mostrarParqueadero();
-                    
+
+                    break;
+
+                case 6:
+                    //Los carros que se estacionaron antes de cambiar la tarifa, se les habrá cobrado la tarifa anterior.
+                    System.out.println("Ingrese la contraseña de verificación"); //La contraseña es 112233
+                    int password = sc.nextInt();
+                    sc.nextLine(); //Limpiamos el buffer
+                    if (password == 112233) { //Hacemos la verificación de la contraseña
+                        System.out.print("Ingrese la tarifa nueva: ");
+                        double nuevaTarifa = sc.nextDouble();
+                        parqueadero.setTarifaHora(nuevaTarifa); //Cambiamos la tarifa con el set
+                    }
                     break;
 
                 case 0:
