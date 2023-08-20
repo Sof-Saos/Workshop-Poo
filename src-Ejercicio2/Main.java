@@ -24,6 +24,7 @@ public class Main {
             System.out.println("3. Retirar carro.");
             System.out.println("4. Cambiar tarifa (Opción de administrador).");
             System.out.println("5. Agregar y parquear un carro nuevo");
+            System.out.println("6. Ver simulación completa. (Sin ingresar más cosas por consola)"); //No ejecutar esta después de haber ingresado alguna opción diferente antes
             System.out.println("0. Salir del programa.");
             System.out.print("Seleccione una opción: ");
             opcion = sc.nextInt();
@@ -92,6 +93,36 @@ public class Main {
                             System.out.print("Ingrese las horas por las cual lo dejará: "); int tiempo = sc.nextInt();
                             parqueadero.cobrarPorTiempo(nuevoCarro, tiempo);
                         }
+                    break;
+
+                case 6:
+                    //Primero vemos el estacionamiento vacio
+                    System.out.println("Estacionamiento vacio");
+                    parqueadero.mostrarParqueadero();
+
+                    //Ahora agregamos los carros
+                    if (parqueadero.parquearCarro(carro1, 1, 3)) { parqueadero.cobrarPorTiempo(carro1, 3); }
+                    if (parqueadero.parquearCarro(carro2, 3, 6)) { parqueadero.cobrarPorTiempo(carro2, 7); }
+                    if (parqueadero.parquearCarro(carro3, 5, 10)) { parqueadero.cobrarPorTiempo(carro3, 1); }
+                    if (parqueadero.parquearCarro(carro6, 4, 9)) { parqueadero.cobrarPorTiempo(carro6, 6); }
+                    if (parqueadero.parquearCarro(carro7, 2, 6)) { parqueadero.cobrarPorTiempo(carro7, 3); }
+                    if (parqueadero.parquearCarro(carro8, 6, 4)) { parqueadero.cobrarPorTiempo(carro8, 5); }
+
+
+                    //Carros que no podra por que el espacio ya esta ocupado
+                    if (parqueadero.parquearCarro(carro4, 1, 3)) { parqueadero.cobrarPorTiempo(carro4, 9); }
+                    if (parqueadero.parquearCarro(carro5, 5, 10)) { parqueadero.cobrarPorTiempo(carro5, 2); }
+
+                    //Veamos el parqueadero despues de llenarlo con los carros
+                    parqueadero.mostrarParqueadero();
+
+                    //Y intentamos reasignar los carros que no se pudieron agregar antes?
+                    if (parqueadero.parquearCarro(carro4, 5, 3)) { parqueadero.cobrarPorTiempo(carro4, 9); }
+                    if (parqueadero.parquearCarro(carro5, 1, 10)) { parqueadero.cobrarPorTiempo(carro5, 2); }
+                    System.out.println();
+                    //Veamos si se agregaron exitosamente
+                    parqueadero.mostrarParqueadero();
+                    
                     break;
 
                 case 0:
