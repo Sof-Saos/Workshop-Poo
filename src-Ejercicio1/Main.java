@@ -84,9 +84,9 @@ public class Main {
 
         do {
             System.out.println("1. Ver informacion de las embarcaciones disponibles");
-            System.out.println("2. Alquilar velero");
-            System.out.println("3. Alquilar yate"); //Dado que los yates se pueden tanto alquilar como comprar, se definen dos opciones para yate
-            System.out.println("4. Comprar yate");
+            System.out.println("2. Alquilar un velero");
+            System.out.println("3. Alquilar un yate"); //Dado que los yates se pueden tanto alquilar como comprar, se definen dos opciones para yate
+            System.out.println("4. Comprar un yate");
             System.out.println("5. Ver mis datos y saldo de cuenta"); //comprobar cuanto tiene en su bill
             System.out.println("6. Agregar más plata para comprar"); //Agregar más platica a su bill
             System.out.println("0. Salir del programa");
