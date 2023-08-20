@@ -2,9 +2,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         int opcion;
-        String placaConsola;
-        String marcaConsola;
-        String modeloConsola;
 
         //Creacion de objetos e instancias.
         Parqueadero parqueadero = new Parqueadero(7200);
@@ -26,6 +23,7 @@ public class Main {
             System.out.println("2. Parquear carros.");
             System.out.println("3. Retirar carro.");
             System.out.println("4. Cambiar tarifa (Opción de administrador).");
+            System.out.println("5. Agregar y parquear un carro nuevo");
             System.out.println("0. Salir del programa.");
             System.out.print("Seleccione una opción: ");
             opcion = sc.nextInt();
@@ -35,10 +33,7 @@ public class Main {
                 case 1:
                     parqueadero.mostrarParqueadero();
                     break;
-
                 case 2:
-                    System.out.println("Espacios disponibles: ");
-                    parqueadero.mostrarParqueadero(); //Primero se muestra el parqueadero para que el usuario pueda ver los lugares disponibles
                     //Carros que se estacionaran correctamente
                     if (parqueadero.parquearCarro(carro1, 1, 3)) { parqueadero.cobrarPorTiempo(carro1, 3); }
                     if (parqueadero.parquearCarro(carro2, 3, 6)) { parqueadero.cobrarPorTiempo(carro2, 7); }
@@ -51,10 +46,13 @@ public class Main {
                     //Carros que no podra por que el espacio ya esta ocupado
                     if (parqueadero.parquearCarro(carro4, 1, 3)) { parqueadero.cobrarPorTiempo(carro4, 9); }
                     if (parqueadero.parquearCarro(carro5, 5, 10)) { parqueadero.cobrarPorTiempo(carro5, 2); }
+
+                    System.out.println();
+                    parqueadero.mostrarParqueadero();
                     break;
 
                 case 3:
-                    System.out.println("Ingrese la placa del auto a retirar");
+                    System.out.print("Ingrese la placa del auto a retirar: ");
                     String retiro = sc.nextLine();
                     parqueadero.retirarCarro(retiro);
                     break;
@@ -69,6 +67,33 @@ public class Main {
                         double nuevaTarifa = sc.nextDouble();
                         parqueadero.setTarifaHora(nuevaTarifa); //Cambiamos la tarifa con el set
                     }
+                    break;
+
+                case 5:
+                    //Se le piden los datos al usuario
+                    System.out.print("Ingrese la placa de su auto: "); String placaConsola = sc.nextLine();
+                    System.out.print("Ingrese la marca de su auto: "); String marcaConsola = sc.nextLine();
+                    System.out.print("Ingrese el modelo de su auto: "); String modeloConsola = sc.nextLine();
+                    Carro nuevoCarro = new Carro(placaConsola, marcaConsola, modeloConsola);
+                    System.out.println("Carro agregado con éxito.");
+                    System.out.println();
+
+                    //Se le enseñan los espacios ocupados y disponibles
+                    System.out.println("Revise por favor donde desea parquear. ");
+                    parqueadero.mostrarParqueadero();
+
+                    //Se le pide la ubicación con las "Coordenadas" del lugar
+                    System.out.print("Ingrese la fila en la que desea parquearlo: "); int fila = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Ingrese la columna en la que desea parquearlo: "); int columna = sc.nextInt();
+                    sc.nextLine();
+                    //Y si el espacio si esta disponible, y retorna true, entonces se le dice cuanto debe pagar por las horas que decida estar.
+                        if (parqueadero.parquearCarro(nuevoCarro, fila, columna)) {
+                            System.out.print("Ingrese las horas por las cual lo dejará: "); int tiempo = sc.nextInt();
+                            parqueadero.cobrarPorTiempo(nuevoCarro, tiempo);
+                        }
+                    break;
+
                 case 0:
                     System.out.println("Gracias por utilizar el parqueadero Estacionando en las Nubes. Tenga un lindo día!");
                     break;

@@ -24,23 +24,22 @@ public class Parqueadero {
         System.out.println("Espacio en la fila " + (fila+1) + ", columna " + (columna+1) + ", ocupado.");
         return false;
     }
-    public double cobrarPorTiempo(Carro carro, int horas){
+    public double cobrarPorTiempo(Carro carro, int horas){ //Se multiplica el tiempo que estara por la tarifa
         double cobro = tarifaHora * horas;
         System.out.println("El auto con placa " + carro.getPlaca() + " deberá pagar " + cobro);
         System.out.println();
         return cobro;
     }
-    public void retirarCarro(String placa){
+    public void retirarCarro(String placa){ //Para retirar un auto, se le pide al usuario la placa del carro
         for (int fila = 0; fila < 5; fila++) {
             for (int columna = 0; columna < 10; columna++) {
-                Carro carro = espaciosEstacionamiento[fila][columna];
-                if (carro != null && carro.getPlaca().equals(placa)) {
-                    espaciosEstacionamiento[fila][columna] = null;
+                Carro carro = espaciosEstacionamiento[fila][columna]; //se crea un objeto de tipo carro que tendra una ubicacion diferente cada que itere el ciclo
+                if (carro != null && carro.getPlaca().equals(placa)) { //Se verifique si en la posición de carro, hay algo y si la placa es igual a la ingresada
+                    espaciosEstacionamiento[fila][columna] = null; // Si es así, se actualiza la matriz de espacios ocupados
                     System.out.println("Carro con placa " + placa + " retirado con éxito.");
                 }
             }
         }
-        System.out.println("No se encontró un carro con la placa " + placa);
     }
     public void mostrarParqueadero() {
         System.out.print("  ");
@@ -60,7 +59,7 @@ public class Parqueadero {
             }
             System.out.println();
             for (int j = 0; j < 10; j++) {
-                System.out.print(" ");
+                System.out.print(" "); //Separar las filas
             }
             System.out.println();
         }
