@@ -8,7 +8,7 @@ public class Embarcacion {
     protected int fechaFabricacion;
     protected int eslora;
     protected String tipo;
-    private static ArrayList<Velero> veleros = new ArrayList<>(); //Publicos para poder
+    private static ArrayList<Velero> veleros = new ArrayList<>(); 
     private static ArrayList<Yate> yates = new ArrayList<>();
 
     protected Embarcacion(Capitan capitan, int fechaFabricacion, int eslora, double precioBase, String tipo) {
