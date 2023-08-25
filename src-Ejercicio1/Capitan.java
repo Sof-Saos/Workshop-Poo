@@ -1,5 +1,5 @@
 public class Capitan {
-    private String nombre;
+    public String nombre;
     private String apellido;
     private String matriculaNavegacion;
 
