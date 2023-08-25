@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-
 public class Parqueadero {
     private Carro[][] espaciosEstacionamiento;
     private double tarifaHora;
@@ -52,7 +51,7 @@ public class Parqueadero {
             System.out.print(i + 1 + " "); //Muestra los numeros de las columnas
             for (int j = 0; j < 10; j++) {
                 if (espaciosEstacionamiento[i][j] != null) {
-                    System.out.print("|x");
+                    System.out.print("|\uD83D\uDE97"); //Secuencia unicode para emoji de carro
                 } else {
                     System.out.print("| ");
                 }
