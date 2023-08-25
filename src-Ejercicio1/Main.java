@@ -72,7 +72,7 @@ public class Main {
                             alquilerExitoso = velero1.alquilar(bill);
                             if (alquilerExitoso) {
                                 bill -= velero1.getPrecioBase(); //Restamos el valor del alquiler al saldo del cliente
-                                Embarcacion.veleros.remove(velero1);
+                                Embarcacion.removerVelero(velero1);
                                 capitan.setNombre(nombreCap);
                                 capitan.setApellido(apellidoCap);
                                 capitan.setMatriculaNavegacion(matricula);
@@ -85,7 +85,7 @@ public class Main {
                             alquilerExitoso = velero2.alquilar(bill);
                             if (alquilerExitoso) {
                                 bill -= velero2.getPrecioBase();
-                                Embarcacion.veleros.remove(velero2);
+                                Embarcacion.removerVelero(velero2);
                                 capitan.setNombre(nombreCap);
                                 capitan.setApellido(apellidoCap);
                                 capitan.setMatriculaNavegacion(matricula);
@@ -98,7 +98,7 @@ public class Main {
                             alquilerExitoso = velero3.alquilar(bill);
                             if (alquilerExitoso) {
                                 bill -= velero3.getPrecioBase();
-                                Embarcacion.veleros.remove(velero3);
+                                Embarcacion.removerVelero(velero3);
                                 capitan.setNombre(nombreCap);
                                 capitan.setApellido(apellidoCap);
                                 capitan.setMatriculaNavegacion(matricula);
@@ -128,7 +128,7 @@ public class Main {
                             alquilerExitoso = yate1.alquilar(bill);
                             if (alquilerExitoso) {
                                 bill -= yate1.getPrecioBase(); //Restamos el valor del alquiler al saldo del cliente
-                                Embarcacion.yates.remove(yate1);
+                                Embarcacion.removerYate(yate1);
                                 capitan.setNombre(nombreCap);
                                 capitan.setApellido(apellidoCap);
                                 capitan.setMatriculaNavegacion(matricula);
@@ -141,7 +141,7 @@ public class Main {
                             alquilerExitoso = yate2.alquilar(bill);
                             if (alquilerExitoso) {
                                 bill -= yate2.getPrecioBase();
-                                Embarcacion.yates.remove(yate2);
+                                Embarcacion.removerYate(yate2);
                                 capitan.setNombre(nombreCap);
                                 capitan.setApellido(apellidoCap);
                                 capitan.setMatriculaNavegacion(matricula);
@@ -154,7 +154,7 @@ public class Main {
                             alquilerExitoso = yate3.alquilar(bill);
                             if (alquilerExitoso) {
                                 bill -= yate3.getPrecioBase();
-                                Embarcacion.yates.remove(yate3);
+                                Embarcacion.removerYate(yate3);
                                 capitan.setNombre(nombreCap);
                                 capitan.setApellido(apellidoCap);
                                 capitan.setMatriculaNavegacion(matricula);
@@ -166,7 +166,7 @@ public class Main {
                             alquilerExitoso = yate4.alquilar(bill);
                             if (alquilerExitoso) {
                                 bill -= yate4.getPrecioBase();
-                                Embarcacion.yates.remove(yate4);
+                                Embarcacion.removerYate(yate4);
                                 capitan.setNombre(nombreCap);
                                 capitan.setApellido(apellidoCap);
                                 capitan.setMatriculaNavegacion(matricula);
@@ -196,7 +196,7 @@ public class Main {
                             ventaExitosa = yate1.comprar(bill);
                             if (ventaExitosa) {
                                 bill -= yate1.calcularMontoCompraYate(); //Restamos el valor de la venta al saldo del cliente
-                                Embarcacion.yates.remove(yate1);
+                                Embarcacion.removerYate(yate1);
                                 capitan.setNombre(nombreCap);
                                 capitan.setApellido(apellidoCap);
                                 capitan.setMatriculaNavegacion(matricula);
@@ -209,7 +209,7 @@ public class Main {
                             ventaExitosa = yate2.comprar(bill);
                             if (ventaExitosa) {
                                 bill -= yate2.calcularMontoCompraYate();
-                                Embarcacion.yates.remove(yate2);
+                                Embarcacion.removerYate(yate2);
                                 capitan.setNombre(nombreCap);
                                 capitan.setApellido(apellidoCap);
                                 capitan.setMatriculaNavegacion(matricula);
@@ -222,7 +222,7 @@ public class Main {
                             ventaExitosa = yate3.comprar(bill);
                             if (ventaExitosa) {
                                 bill -= yate3.calcularMontoCompraYate();
-                                Embarcacion.yates.remove(yate3);
+                                Embarcacion.removerYate(yate3);
                                 capitan.setNombre(nombreCap);
                                 capitan.setApellido(apellidoCap);
                                 capitan.setMatriculaNavegacion(matricula);
@@ -233,7 +233,7 @@ public class Main {
                             ventaExitosa = yate4.comprar(bill);
                             if (ventaExitosa) {
                                 bill -= yate4.calcularMontoCompraYate();
-                                Embarcacion.yates.remove(yate4);
+                                Embarcacion.removerYate(yate4);
                                 capitan.setNombre(nombreCap);
                                 capitan.setApellido(apellidoCap);
                                 capitan.setMatriculaNavegacion(matricula);

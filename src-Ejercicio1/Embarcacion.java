@@ -7,9 +7,9 @@ public class Embarcacion {
     protected double valorAdicional;
     protected int fechaFabricacion;
     protected int eslora;
-    public String tipo;
-    public static ArrayList<Velero> veleros = new ArrayList<>();
-    public static ArrayList<Yate> yates = new ArrayList<>();
+    protected String tipo;
+    private static ArrayList<Velero> veleros = new ArrayList<>(); //Publicos para poder
+    private static ArrayList<Yate> yates = new ArrayList<>();
 
     protected Embarcacion(Capitan capitan, int fechaFabricacion, int eslora, double precioBase, String tipo) {
         this.capitan = capitan;
@@ -42,6 +42,10 @@ public class Embarcacion {
     public static void agregarVelero(Velero velero) {
         veleros.add(velero);
     } //metodo para agregar veleros al arraylist
+    public static void removerYate(Yate yate) { yates.remove(yate);} //metodo para remover yates al arraylist
+    public static void removerVelero(Velero velero) {
+        veleros.remove(velero);
+    } //metodo para remover veleros al arraylist
 
     public static void mostrarInfo() { //Metodo para mostrar todos los veleros y yates disponibles
         int indice = 1;
